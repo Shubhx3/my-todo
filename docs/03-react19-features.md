@@ -5,6 +5,7 @@ React 19 is the latest version of React, and it brings some amazing new features
 ## 🤔 What's New in React 19?
 
 Think of React 19 like upgrading from a regular car to a sports car:
+
 - **Faster performance** - Everything happens quicker
 - **Better user experience** - Smoother interactions
 - **Smarter features** - The app becomes more intelligent
@@ -17,7 +18,8 @@ Think of React 19 like upgrading from a regular car to a sports car:
 
 **Real-world example:** Like having a separate line for complex orders at a coffee shop - simple orders don't have to wait!
 
-#### How We Use It:
+#### How useTransition is Implemented
+
 ```tsx
 // In our useTodos hook
 const [isPending, startTransition] = useTransition();
@@ -30,12 +32,14 @@ const updateFilter = (newFilter) => {
 };
 ```
 
-#### What You'll Notice:
+#### What You'll Notice (useTransition)
+
 - When you click filter buttons (All/Active/Completed), the change is smooth
 - Other interactions (like typing) don't get blocked
 - The filter buttons show a slight fade while updating
 
-#### Before vs After:
+#### Transition: Before vs After
+
 - **Before React 19**: Filtering might block other interactions
 - **After React 19**: You can filter and type at the same time!
 
@@ -47,7 +51,8 @@ const updateFilter = (newFilter) => {
 
 **Real-world example:** Like a video game showing your character move before checking if the move is valid
 
-#### How We Use It:
+#### How useOptimistic is Implemented
+
 ```tsx
 // In our useTodos hook
 const [optimisticTodos, addOptimisticTodo] = useOptimistic(
@@ -65,12 +70,14 @@ const addTodo = (text) => {
 };
 ```
 
-#### What You'll Notice:
+#### What You'll Notice (useOptimistic)
+
 - New todos appear **instantly** when you click "Add"
 - No waiting for the app to "think" about it
 - Much more responsive feeling
 
-#### Before vs After:
+#### Optimistic: Before vs After
+
 - **Before React 19**: Add todo → wait → see todo appear
 - **After React 19**: Add todo → see todo appear instantly!
 
@@ -82,7 +89,8 @@ const addTodo = (text) => {
 
 **Real-world example:** Like a smart doorbell that knows when someone is at the door
 
-#### How We Use It:
+#### How We Use It
+
 ```tsx
 // In our TodoInput component
 const { pending } = useFormStatus();
@@ -100,12 +108,14 @@ return (
 );
 ```
 
-#### What You'll Notice:
+#### What You'll Notice (useFormStatus)
+
 - Input field becomes disabled while adding a todo
 - Button text changes to "Adding..." during the process
 - Prevents double-clicking and duplicate todos
 
-#### Before vs After:
+#### Before vs After
+
 - **Before React 19**: Had to manually manage form states
 - **After React 19**: Form automatically knows its own status!
 
@@ -113,37 +123,43 @@ return (
 
 ## 🎯 Why These Features Matter
 
-### For Users (People Using the App):
+### For Users (People Using the App)
+
 1. **Faster feeling app** - Things happen instantly
 2. **Smoother interactions** - No more blocking or freezing
 3. **Better feedback** - Always know what's happening
 
-### For Developers (People Building the App):
+### For Developers (People Building the App)
+
 1. **Less code to write** - React 19 handles complexity automatically
 2. **Fewer bugs** - Built-in features prevent common mistakes
 3. **Better performance** - Automatic optimizations
 
 ## 🔍 See React 19 in Action
 
-### Test useTransition:
+### Test useTransition
+
 1. Add several todos to your list
 2. Click between "All", "Active", and "Completed" filters quickly
 3. Try typing in the input while clicking filters
 4. Notice how everything stays smooth!
 
-### Test useOptimistic:
+### Test useOptimistic
+
 1. Type a new todo in the input field
 2. Click "Add" and watch how fast it appears
 3. The todo shows up before the button even finishes its animation!
 
-### Test useFormStatus:
+### Test useFormStatus
+
 1. Type a new todo
 2. Click "Add" and watch the button text change
 3. Notice how the input gets disabled briefly
 
 ## 🧠 Understanding the Magic
 
-### useTransition Deep Dive:
+### useTransition Deep Dive
+
 ```tsx
 // What happens when you click a filter button:
 
@@ -155,7 +171,8 @@ return (
 6. isPending becomes false
 ```
 
-### useOptimistic Deep Dive:
+### useOptimistic Deep Dive
+
 ```tsx
 // What happens when you add a todo:
 
@@ -166,7 +183,8 @@ return (
 5. If something went wrong, React would revert the optimistic update
 ```
 
-### useFormStatus Deep Dive:
+### useFormStatus Deep Dive
+
 ```tsx
 // What happens during form submission:
 
@@ -181,7 +199,8 @@ return (
 
 ## 🆚 Comparison: Old vs New React
 
-### Old React Way (Before React 19):
+### Old React Way (Before React 19)
+
 ```tsx
 // Managing loading states manually
 const [isLoading, setIsLoading] = useState(false);
@@ -204,7 +223,8 @@ const filterTodos = (filter) => {
 };
 ```
 
-### New React 19 Way:
+### New React 19 Way
+
 ```tsx
 // React 19 handles it automatically!
 const [isPending, startTransition] = useTransition();
@@ -232,6 +252,7 @@ const [optimisticTodos, addOptimisticTodo] = useOptimistic(todos);
 ## 🔮 The Future
 
 React 19 features like these are setting the foundation for:
+
 - **Even faster web apps**
 - **Better user experiences**
 - **Easier development**
@@ -242,8 +263,9 @@ By learning these patterns now, you're preparing for the future of web developme
 ## 🎯 Practice Challenge
 
 Try to identify these features in other websites:
+
 - **Optimistic updates**: Social media likes, comments
 - **Smooth transitions**: Filtering, searching
 - **Smart forms**: Auto-disabling during submission
 
-Once you start noticing these patterns, you'll see them everywhere! 🌟 
+Once you start noticing these patterns, you'll see them everywhere! 🌟

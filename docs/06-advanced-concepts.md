@@ -9,6 +9,7 @@ Ready to level up? This guide covers advanced topics that will help you become a
 TypeScript is like having a **smart assistant** that catches mistakes before they happen. Let's explore advanced TypeScript patterns used in our app:
 
 #### Generic Types
+
 ```tsx
 // Generic function that works with any type
 function createArray<T>(item: T, count: number): T[] {
@@ -21,6 +22,7 @@ const strings = createArray<string>("hi", 2);  // ["hi", "hi"]
 ```
 
 #### Union Types in Our App
+
 ```tsx
 // FilterType can only be one of these values
 export type FilterType = 'all' | 'active' | 'completed';
@@ -31,6 +33,7 @@ const invalidFilter: FilterType = 'done';   // ❌ TypeScript error
 ```
 
 #### Interface vs Type
+
 ```tsx
 // Interface (can be extended)
 interface BaseTodo {
@@ -53,6 +56,7 @@ type TodoWithTimestamp = Todo & {
 ### Advanced TypeScript Patterns
 
 #### Conditional Types
+
 ```tsx
 // Type that changes based on condition
 type ApiResponse<T> = T extends string 
@@ -64,6 +68,7 @@ type TodoResponse = ApiResponse<Todo>;      // { data: Todo }
 ```
 
 #### Utility Types
+
 ```tsx
 // Pick specific properties
 type TodoPreview = Pick<Todo, 'id' | 'text'>;
@@ -83,6 +88,7 @@ type ActiveFilter = Exclude<FilterType, 'all'>;  // 'active' | 'completed'
 ### Custom Hooks Best Practices
 
 #### Hook Composition
+
 ```tsx
 // Breaking down useTodos into smaller hooks
 function useFilter() {
@@ -119,6 +125,7 @@ function useTodos() {
 ```
 
 #### Hook Dependencies and Cleanup
+
 ```tsx
 function useLocalStorage<T>(key: string, initialValue: T) {
   const [value, setValue] = useState<T>(() => {
@@ -149,6 +156,7 @@ function useLocalStorage<T>(key: string, initialValue: T) {
 ### Advanced React 19 Features
 
 #### Concurrent Features Deep Dive
+
 ```tsx
 // Using startTransition with priority
 function usePriorityUpdates() {
@@ -171,6 +179,7 @@ function usePriorityUpdates() {
 ```
 
 #### Advanced useOptimistic Patterns
+
 ```tsx
 function useOptimisticTodos() {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -215,6 +224,7 @@ function useOptimisticTodos() {
 ## 🎨 Advanced CSS and Styling
 
 ### CSS-in-JS with Styled Components (Alternative Approach)
+
 ```tsx
 import styled from 'styled-components';
 
@@ -242,6 +252,7 @@ const StyledButton = styled.button<{ variant: 'primary' | 'secondary' }>`
 ```
 
 ### Advanced Tailwind Patterns
+
 ```tsx
 // Dynamic classes with clsx/classnames
 import clsx from 'clsx';
@@ -276,6 +287,7 @@ function Button({ variant, size, children, ...props }) {
 ```
 
 ### CSS Variables with Tailwind
+
 ```css
 /* In your CSS */
 :root {
@@ -305,6 +317,7 @@ module.exports = {
 ### Component Composition Patterns
 
 #### Compound Components
+
 ```tsx
 // TodoCard compound component
 function TodoCard({ children }: { children: React.ReactNode }) {
@@ -344,6 +357,7 @@ TodoCard.Actions = TodoCardActions;
 ```
 
 #### Render Props Pattern
+
 ```tsx
 function DataProvider<T>({ 
   children, 
@@ -368,6 +382,7 @@ function DataProvider<T>({
 ```
 
 #### Higher-Order Components (HOCs)
+
 ```tsx
 function withLoading<P extends object>(
   Component: React.ComponentType<P>
@@ -392,6 +407,7 @@ const TodoListWithLoading = withLoading(TodoList);
 ## 🔧 Performance Optimization
 
 ### React.memo and useMemo Advanced Usage
+
 ```tsx
 // Memoized component with custom comparison
 const TodoItem = React.memo<TodoItemProps>(({ todo, onToggle, onDelete }) => {
@@ -430,6 +446,7 @@ function ExpensiveComponent({ todos, filter, searchTerm }) {
 ```
 
 ### useCallback Optimization
+
 ```tsx
 function TodoApp() {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -463,6 +480,7 @@ function TodoApp() {
 ## 🧪 Testing Advanced Components
 
 ### Testing Custom Hooks
+
 ```tsx
 import { renderHook, act } from '@testing-library/react-hooks';
 import { useTodos } from '../hooks/useTodos';
@@ -498,6 +516,7 @@ describe('useTodos', () => {
 ```
 
 ### Testing React 19 Features
+
 ```tsx
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -533,6 +552,7 @@ describe('TodoInput with useFormStatus', () => {
 ## 🌐 Integration with External APIs
 
 ### Advanced API Integration
+
 ```tsx
 // API service layer
 class TodoAPI {
@@ -609,6 +629,7 @@ function useTodosAPI() {
 ## 🚀 Deployment and Production
 
 ### Environment Configuration
+
 ```tsx
 // config/environment.ts
 interface Config {
@@ -629,6 +650,7 @@ export default config;
 ```
 
 ### Error Boundaries
+
 ```tsx
 interface ErrorBoundaryState {
   hasError: boolean;
@@ -700,4 +722,4 @@ class ErrorBoundary extends React.Component<
 5. **Master testing strategies** - Integration tests, E2E testing
 6. **Learn state management libraries** - Zustand, Jotai, Valtio
 
-Remember: **Advanced concepts build on fundamentals!** Make sure you understand the basics before diving into these advanced topics. Practice implementing these patterns gradually in your own projects! 🌟 
+Remember: **Advanced concepts build on fundamentals!** Make sure you understand the basics before diving into these advanced topics. Practice implementing these patterns gradually in your own projects! 🌟
